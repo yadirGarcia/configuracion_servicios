@@ -1,0 +1,26 @@
+server:
+  port: 7000
+spring:
+    application:
+        name: servidor-gateway
+    cloud:
+      gateway:
+        routes:
+        - id: service-image
+          uri: lb://service-image
+          predicates:
+            - Path=/simages/**
+          filters:
+            - RewritePath=/simages/*,/
+
+        - id: service-client
+          uri: lb://service-client
+          predicates:
+            - Path=/sclients/**
+          filters:
+            - RewritePath=/sclients/*,/
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:8761/eureka
