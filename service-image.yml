@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: service-image
+server:
+  port: 8082
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:8761/eureka
